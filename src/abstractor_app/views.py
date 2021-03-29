@@ -18,6 +18,7 @@ class DocumentView(viewsets.ModelViewSet):
 
 class AbstractionView(viewsets.ModelViewSet):
     queryset = Abstraction.objects.all()
+    print(queryset)
     serializer_class = AbstractionSerializer
 
 
