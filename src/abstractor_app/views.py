@@ -6,7 +6,7 @@ from .models import User, Document, Abstraction
 from .serializers import UserSerializer, DocumentSerializer, AbstractionSerializer
 from django.views import View
 from django.http import HttpResponse
-from script.import_list import generate_list_from_file
+from script.execute import execute_web_program
 
 # Create your views here.
 class UserView(viewsets.ModelViewSet):
@@ -35,9 +35,7 @@ class ExecuteView(GenericAPIView):
         client = request.data["abstraction"]["clientInformation"]
         legal = request.data["abstraction"]["legalDescription"]
         upload_file = request.data["abstraction"]["uploadFile"].split('\\')[-1]
-        print(upload_file)
-        test_list = generate_list_from_file(upload_file, 'Documents')
-        print(test_list)
+        execute_web_program(client, legal, upload_file)
         return Response(data="some string", status=status.HTTP_200_OK)
 
 
