@@ -14,12 +14,14 @@ legal_model = models.CharField(max_length=32767, null=True)
 related_model = models.CharField(max_length=32767, null=True)
 comment_model = models.CharField(max_length=32767, null=True)
 
+
 # Create your models here.
 class User(AbstractUser):
     name = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.username
+
 
 class Document(models.Model):
     # county = models.CharField(max_length=20, null=True)
